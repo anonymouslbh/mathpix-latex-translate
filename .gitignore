@@ -1,0 +1,23 @@
+# Local validation and Python caches
+.validation-deps/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local credentials and translation project artifacts
+.env
+.env.*
+source/
+baseline/
+translation/
+build/
+qa/
+output/
+*.pdf
+*.zip
+
+# Editor and operating system files
+.DS_Store
+Thumbs.db
+.vscode/

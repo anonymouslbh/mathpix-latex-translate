@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mathpix 专业书籍翻译"
+  short_description: "将 Mathpix LaTeX 翻译为中文，维护全书术语与续译记录并检查结构和排版"
+  default_prompt: "使用 $mathpix-latex-translate，将提供的 Mathpix LaTeX 和原始 PDF 翻译为专业、一致、可续译的中文 LaTeX 项目。"
