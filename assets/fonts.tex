@@ -1,0 +1,58 @@
+% Copy to translation/fonts.tex and load once from the shared preamble.
+% Put \PassOptionsToPackage{no-math}{fontspec} before \documentclass.
+% Optional: \newcommand{\MLTFontProfile}{windows} or {fandol} before input.
+\RequirePackage{iftex}
+\RequireXeTeX
+\RequirePackage{fontspec}
+\RequirePackage{xeCJK}
+\providecommand{\MLTFontProfile}{auto}
+\makeatletter
+\newcommand{\MLT@WindowsFonts}{%
+  \setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]%
+  \setCJKsansfont{SimHei}[AutoFakeBold=2]%
+  \setCJKmonofont{SimSun}%
+  \setCJKfamilyfont{zhsong}{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]%
+  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold=2]%
+  \setCJKfamilyfont{zhkai}{KaiTi}%
+  \def\MLTResolvedFontProfile{windows-cm-v1}%
+}
+\newcommand{\MLT@FandolFonts}{%
+  \setCJKmainfont{FandolSong-Regular.otf}[%
+    BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]%
+  \setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]%
+  \setCJKmonofont{FandolFang-Regular.otf}%
+  \setCJKfamilyfont{zhsong}{FandolSong-Regular.otf}[%
+    BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]%
+  \setCJKfamilyfont{zhhei}{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]%
+  \setCJKfamilyfont{zhkai}{FandolKai-Regular.otf}%
+  \def\MLTResolvedFontProfile{fandol-cm-v1}%
+}
+\newcommand{\MLT@AutoFonts}{%
+  \IfFontExistsTF{SimSun}{%
+    \IfFontExistsTF{SimHei}{%
+      \IfFontExistsTF{KaiTi}{\MLT@WindowsFonts}{\MLT@FandolFonts}%
+    }{\MLT@FandolFonts}%
+  }{\MLT@FandolFonts}%
+}
+\edef\MLT@RequestedProfile{\MLTFontProfile}
+\def\MLT@AutoProfile{auto}
+\def\MLT@WindowsProfile{windows}
+\def\MLT@FandolProfile{fandol}
+\ifx\MLT@RequestedProfile\MLT@AutoProfile
+  \MLT@AutoFonts
+\else\ifx\MLT@RequestedProfile\MLT@WindowsProfile
+  \MLT@WindowsFonts
+\else\ifx\MLT@RequestedProfile\MLT@FandolProfile
+  \MLT@FandolFonts
+\else
+  \PackageError{mathpix-latex-translate}{Unknown font profile}{Use auto, windows or fandol.}%
+\fi\fi\fi
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\providecommand{\songti}{\CJKfamily{zhsong}}
+\providecommand{\heiti}{\CJKfamily{zhhei}}
+\providecommand{\kaishu}{\CJKfamily{zhkai}}
+\DeclareMathAlphabet{\mathbf}{OT1}{cmr}{bx}{n}
+\typeout{MLT font profile: \MLTResolvedFontProfile}
+\makeatother

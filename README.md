@@ -10,6 +10,7 @@
 - 维护全书术语表，区分候选译法、用户指定译法和有来源核实的译法。
 - 保存输入校验值、翻译进度、排版约定与疑点，支持长书中断后继续。
 - 先试译和试排，再展开全书；检查中文字体、文字复制、公式、图表和分页。
+- 默认宋体正文、黑体标题、楷体强调，西文 Latin Modern 族、数学 Computer Modern/AMS；跨章共用一个字体配置，实际字体可按用户模板统一覆盖。
 - 对照原 PDF 恢复图片的物理尺寸和纵横比，避免 Mathpix 图片被默认放大。
 - 按用户要求制作封面和封底，保存生成提示词和资产，接入可重新编译的 TeX 工程，并核对实际 PDF 首末页与正文。
 
@@ -22,7 +23,7 @@
 skill 位于仓库根目录，路径为 .，安装名使用 mathpix-latex-translate。
 ```
 
-也可以把本仓库作为 `mathpix-latex-translate` 文件夹放入当前 Codex 支持的个人 skill 目录或项目的 `.agents/skills/`。目录中应直接包含 `SKILL.md`、`agents/`、`references/` 和 `scripts/`，不要再套一层同名目录。
+也可以把本仓库作为 `mathpix-latex-translate` 文件夹放入当前 Codex 支持的个人 skill 目录或项目的 `.agents/skills/`。目录中应直接包含 `SKILL.md`、`agents/`、`references/`、`assets/` 和 `scripts/`，不要再套一层同名目录。
 
 Codex 会检测新安装的 skill；若列表中未出现，可重启后检查。安装位置和发现机制以 [OpenAI 官方 Skills 文档](https://learn.chatgpt.com/docs/build-skills)为准。
 
@@ -54,7 +55,9 @@ Codex 会检测新安装的 skill；若列表中未出现，可重启后检查�
 | `agents/openai.yaml` | Codex 展示名称与默认调用提示 |
 | `references/project-workflow.md` | 项目记录、续译、结构检查和编译约定 |
 | `references/terminology.md` | 全书术语字段、证据与一致性管理 |
+| `references/typography.md` | 默认字体、共享配置、跨平台替代与字体验收 |
 | `references/cover-workflow.md` | 封面/封底生成、资产记录、TeX 接入和 PDF 核验 |
+| `assets/fonts.tex` | 可复制进翻译工程的 XeLaTeX 字体配置片段 |
 | `scripts/check_structure.py` | 对照两个 TeX 文件或目录的有限结构清单 |
 
 ## 结构检查
