@@ -8,7 +8,7 @@ progress.md 表格按稳定单元 ID 记录：源文件及节标题、源页范�
 
 issues.md 每项记录 ID、源定位、目标定位、类型（OCR/原文疑义/术语/编译/版面）、证据、处理、状态。style-guide.md 保存模板/引擎/字体/尺寸/标点/首次双语和图表处理约定。
 
-字体按 [typography.md](typography.md) 统一：project.json 保存实际 font_profile 和共享配置 SHA256，style-guide.md 写同一角色映射；初始化试排后冻结方案，不让各章自行选择。续改已交付工程时，更新 skill 不等于已更改 PDF；实际字体调整后需重新编译和全页复查。
+字体、字号和实际基线距按 [typography.md](typography.md) 统一：project.json 保存实际 font_profile、size_profile 和共享配置 SHA256，style-guide.md 写同一角色映射及带单位的字号/基线距；初始化试排后冻结方案，不让各章自行选择。续改已交付工程时，更新 skill 不等于已更改 PDF；实际字体或字号调整后需重新编译和全页复查。
 
 续译先核对输入及已审文件哈希；源文改变时只将受影响单元及依赖项标记重审。章节完成记录构建日志和审校范围。全书完成需汇总所有单元，不能只审最后一章。
 

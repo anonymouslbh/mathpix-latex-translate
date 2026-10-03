@@ -1,0 +1,65 @@
+% Copy to translation/layout.tex; input once after fonts.tex and other packages.
+% Defaults for ctex classes and standard article/report/book with xeCJK.
+% Adapt the shared file when an accepted user template overrides this profile.
+\RequirePackage{caption}
+\makeatletter
+\linespread{1}
+% Preserve class-specific display/list settings, then set exact text sizes.
+\NewCommandCopy{\MLT@OriginalNormalSize}{\normalsize}
+\NewCommandCopy{\MLT@OriginalSmall}{\small}
+\NewCommandCopy{\MLT@OriginalFootnoteSize}{\footnotesize}
+\renewcommand{\normalsize}{\MLT@OriginalNormalSize\@setfontsize\normalsize{11}{15.6}}
+\renewcommand{\small}{\MLT@OriginalSmall\@setfontsize\small{10}{14}}
+\renewcommand{\footnotesize}{\MLT@OriginalFootnoteSize\@setfontsize\footnotesize{9}{12.6}}
+\renewcommand{\scriptsize}{\@setfontsize\scriptsize{8}{10.8}}
+\renewcommand{\tiny}{\@setfontsize\tiny{6}{8}}
+\renewcommand{\large}{\@setfontsize\large{13}{18.2}}
+\renewcommand{\Large}{\@setfontsize\Large{16}{22.4}}
+\renewcommand{\LARGE}{\@setfontsize\LARGE{18}{25.2}}
+\renewcommand{\huge}{\@setfontsize\huge{22}{30.8}}
+\renewcommand{\Huge}{\@setfontsize\Huge{26}{36.4}}
+\DeclareMathSizes{11}{11}{8}{6}
+\DeclareMathSizes{10}{10}{7}{5}
+\DeclareMathSizes{9}{9}{6}{5}
+\newcommand{\MLTBodySize}{\normalsize}
+\newcommand{\MLTChapterSize}{\huge}
+\newcommand{\MLTSectionSize}{\Large}
+\newcommand{\MLTSubsectionSize}{\large}
+\newcommand{\MLTSubsubsectionSize}{\normalsize}
+\newcommand{\MLTCaptionSize}{\small}
+\newcommand{\MLTTableSize}{\small}
+\newcommand{\MLTReferenceSize}{\small}
+\newcommand{\MLTHeaderSize}{\footnotesize}
+\newcommand{\MLTFolioSize}{\footnotesize}
+\newcommand{\MLTCoverTitleSize}{\fontsize{30}{36}\selectfont}
+\newcommand{\MLTCoverEnglishSize}{\fontsize{18}{24}\selectfont}
+\newcommand{\MLTCoverAuthorSize}{\fontsize{12}{16}\selectfont}
+\DeclareCaptionFont{mltsize}{\MLTCaptionSize}
+\captionsetup{font=mltsize}
+% The begin hooks run within each environment's group; body size is restored.
+\AddToHook{env/tabular/begin}{\MLTTableSize}
+\AddToHook{env/tabular*/begin}{\MLTTableSize}
+\AddToHook{env/longtable/begin}{\MLTTableSize}
+\AddToHook{env/thebibliography/begin}{\MLTReferenceSize}
+\AtBeginDocument{%
+  \@ifundefined{bibfont}{}{\renewcommand{\bibfont}{\MLTReferenceSize}}%
+  \normalsize
+}
+\@ifundefined{ctexset}{%
+  \RequirePackage{titlesec}
+  \titleformat{\section}{\normalfont\MLTSectionSize\sffamily\heiti\bfseries}{\thesection}{1em}{}
+  \titleformat{\subsection}{\normalfont\MLTSubsectionSize\sffamily\heiti\bfseries}{\thesubsection}{1em}{}
+  \titleformat{\subsubsection}{\normalfont\MLTSubsubsectionSize\sffamily\heiti\bfseries}{\thesubsubsection}{1em}{}
+  \@ifundefined{chapter}{}{%
+    \titleformat{\chapter}[display]{\normalfont\MLTChapterSize\sffamily\heiti\bfseries}{\chaptertitlename\ \thechapter}{20pt}{}%
+  }%
+}{%
+  \ctexset{
+    section/format={\normalfont\MLTSectionSize\sffamily\heiti\bfseries},
+    subsection/format={\normalfont\MLTSubsectionSize\sffamily\heiti\bfseries},
+    subsubsection/format={\normalfont\MLTSubsubsectionSize\sffamily\heiti\bfseries}
+  }
+  \@ifundefined{chapter}{}{\ctexset{chapter/format={\normalfont\MLTChapterSize\sffamily\heiti\bfseries}}}%
+}
+\typeout{MLT size profile: book-11pt-v1; body 11/15.6 pt}
+\makeatother

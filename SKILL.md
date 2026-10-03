@@ -35,7 +35,7 @@ description: Translate Mathpix-exported LaTeX books and technical papers into Si
 
 ## 中文模板与编译
 
-新建译稿默认采用统一字体：中文正文宋体、标题黑体、强调楷体，西文 Latin Modern 族，数学 Computer Modern/AMS；所有章节共用一个 `fonts.tex`，不单独更换字体。用户明确字体或既有模板优先。先读 [references/typography.md](references/typography.md)，复制并试排其字体配置，冻结实际方案并记录到项目；图注、脚注和封面排版遵循相同角色，原图内部字体保留。
+新建译稿默认采用统一字体：中文正文宋体、标题黑体、强调楷体，西文 Latin Modern 族，数学 Computer Modern/AMS；字号、标题层级和行距采用统一规范，正文 11pt。所有章节共用 `fonts.tex` 和 `layout.tex`，不单独更换字体或字号。用户明确字体、字号或既有模板优先。先读 [references/typography.md](references/typography.md)，复制并试排其配置，冻结实际方案并记录到项目；图注、脚注和封面排版遵循相同角色，原图内部字体保留。
 
 先试译包含正文、复杂公式、表格、图注与脚注的代表性材料，确定中文支持、字体、字号、行距、标题、页面尺寸及编号，再展开全书。优先保留现有类与宏；适配中文时可采用 XeLaTeX/ctex，但须检查包兼容性和实际字体。中文自然重排，不要求原文逐页对应。约定写入 style-guide.md。
 
