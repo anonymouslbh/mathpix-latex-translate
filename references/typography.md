@@ -47,6 +47,8 @@ Windows 字体齐备时试排整套宋/黑/楷方案；缺少其中之一时，�
 
 封面数值是可调整的起始值：根据页面尺寸、白底文字区和书名长度统一调整相应角色，保存最终字号、基线距及原因。封面字号不继承正文；纯画封底无字号规则。
 
+目录的标题、层级、缩进、引导线、页码与换行统一按 [contents-layout.md](contents-layout.md) 执行；目录章条目仍为11pt，不继承正文章标题22pt。
+
 ## 集中配置
 
 从本 skill 实际安装目录复制 [assets/fonts.tex](../assets/fonts.tex) 和 [assets/layout.tex](../assets/layout.tex) 到工程的 `translation/`，由唯一入口或共享导言区各加载一次。字体片段适用于已有 `article`+xeCJK 或 ctex 工程；字号片段支持标准 article/report/book 与 ctex 类，不是完整书籍模板。特殊文档类或用户模板已有 caption、标题、行距控制时先检查兼容性，按同一角色映射适配其接口，不强行叠加此片段。
