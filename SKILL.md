@@ -49,6 +49,10 @@ description: Translate Mathpix-exported LaTeX books and technical papers into Si
 
 每章完成后执行结构比较和实际编译，处理缺字、未定义引用、缺失图片、重复标签、溢出与表格裁切。保留构建命令和日志。可运行 `scripts/check_structure.py baseline translation` 辅助检查；其有限识别范围见工作流，不代替解析器、内容审校或 PDF 对比。
 
+页面 PNG 与对照拼图采用“最新一套＋必要问题页”的保留方式：每本书只长期保留最新已核验 PDF 对应的一套完整页面图，以及仍需复查的问题页。新一套核验完成后清理过期渲染缓存；不要每轮都永久保存整书图片或重复拼图。原书图片、封面资产、可编辑源文件和验收记录继续保留；具体更新与清理边界见 [references/project-workflow.md](references/project-workflow.md) 的“页面图片保留”。
+
+需要清理旧阶段图片、明确过期 PDF 或重复工程副本时，读 [references/storage-cleanup.md](references/storage-cleanup.md)，使用技能目录中的 `scripts/cleanup_project.py`。先生成清理清单，依据项目进度和问题记录保护原书、最新译文、最终 PDF、可编辑工程及必要校对证据，再执行已授权的清理；停止该书全部写入进程，核验副本一致性和文件变化，不把预览当作已经释放空间。
+
 每个完整翻译项目在最终交付前必须读并执行 [references/cover-workflow.md](references/cover-workflow.md)。封面和封底是必需交付项，不以文字扉页或后封文案代替。默认采用本用户已确认的前封面60/40版式及全幅无文字封底，科学主题与书目信息按当前书籍适配；用户当次规格优先。两面分别生成和核对，保存进工程，接入可重新编译的 TeX，再验证 PDF 首末页与正文。
 
 ## 续译与验收
